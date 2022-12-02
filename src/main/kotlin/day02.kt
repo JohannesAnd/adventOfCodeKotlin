@@ -36,12 +36,12 @@ private fun part1(): Int {
 
     File("src/main/resources/day02.txt").bufferedReader().forEachLine { line ->
         run {
-            val (theirHand, yourHand) = line.split(' ')
+            val (theirHandChar, yourHandChar) = line.split(' ')
 
-            val theirHandChar = enumValueOf<Hand>(theirHand)
-            val yourHandChar = map[enumValueOf(yourHand)]
+            val theirHand = enumValueOf<Hand>(theirHandChar)
+            val yourHand = map[enumValueOf(yourHandChar)]
 
-            score += getScore(theirHandChar, yourHandChar ?: Hand.A)
+            score += getScore(theirHand, yourHand ?: Hand.A)
         }
     }
 
@@ -55,15 +55,15 @@ private fun part2(): Int {
 
     File("src/main/resources/day02.txt").bufferedReader().forEachLine { line ->
         run {
-            val (theirHand, expectedOutcome) = line.split(' ')
+            val (theirHandChar, expectedOutcomeChar) = line.split(' ')
 
-            val theirHandChar = enumValueOf<Hand>(theirHand)
+            val theirHand = enumValueOf<Hand>(theirHandChar)
             // Offset the index so that you either win/loose/draw
-            val yourIndex = theirHandChar.ordinal + (outcomeMap[enumValueOf(expectedOutcome)] ?: 0)
+            val yourIndex = theirHand.ordinal + (outcomeMap[enumValueOf(expectedOutcomeChar)] ?: 0)
             // Find our what hand that is and make sure to keep in bounds of the array
-            val yourHandChar = handValues[(yourIndex + handValues.size) % handValues.size]
+            val yourHand = handValues[(yourIndex + handValues.size) % handValues.size]
 
-            score += getScore(theirHandChar, yourHandChar)
+            score += getScore(theirHand, yourHand)
         }
     }
 

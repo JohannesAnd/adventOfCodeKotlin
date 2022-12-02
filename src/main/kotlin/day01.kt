@@ -17,11 +17,11 @@ private fun getInventories(): List<Int> {
     return inventories
 }
 
-fun part1(): Int {
+private fun part1(): Int {
     return getInventories().maxOrNull() ?: 0
 }
 
-fun part2(): Int {
+private fun part2(): Int {
     return getInventories().sorted().takeLast(3).sum()
 }
 
